@@ -1,0 +1,18 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"color_scheme": "Monokai.sublime-color-scheme",
+	"theme": "Adaptive.sublime-theme",
+	"ignored_packages": ["Vintage"],
+	"font_size": 14,
+	"font_face": "Fira Code",
+	"remember_full_screen": true,
+	"auto_hide_status_bar": true,
+	// "gtk_client_side_window_decorations": false,
+	"index_files": true,
+	"indent_subsequent_lines": true,
+	"word_wrap": "false",
+	/*"auto_hide_status_bar": true,*/
+	"dark_theme": "Adaptive.sublime-theme",
+	"light_theme": "Default Dark.sublime-theme"
+}

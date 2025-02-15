@@ -1,0 +1,116 @@
+ <snippet>
+     <content><![CDATA[
+#include <bits/stdc++.h>
+using namespace std;
+#define fastIO ios_base::sync_with_stdio(0), cin.tie(0), cout.tie(0);
+#define endl '\n'
+#define int int64_t
+#define float double
+#define loop(i, n) for(int i = 0; i < n; ++i)
+#define loopeq(i, n) for(int i = 1; i <= n; ++i)
+#define looprev(i, n) for(int i = n - 1; i >= 0; --i)
+#define loopcus(i, start, end) for(int i = start; i < end; ++i)
+#define ff first
+#define ss second
+#define pb push_back
+#define eb emplace_back
+#define all(x) x.begin(), x.end()
+#define sort(x) sort(all(x))
+#define mod int(1000000007)
+#define umap unordered_map
+#define uset unordered_set
+#define pii pair<int, int>
+#define p_q priority_queue
+int dx[8] = { -1, 0, 1, 0, -1, 1, 1, -1};
+int dy[8] = {0, 1, 0, -1, 1, 1, -1, -1};
+int fastpow(int a, int b, int m = LLONG_MAX) {
+	int result = 1, base = a % m;
+	while (b > 0) {
+		if (b & 1)	result = (result * base) % m;
+		base = (base * base) % m;
+		b >>= 1;
+	}
+	return result;
+}
+#define inv(a) fastpow(a, mod - 2, mod)
+#define to_int(str)	stoi(str)
+#define get_setBits(x) __builtin_popcount(x)
+
+#ifndef ONLINE_JUDGE
+#define debug(x) cerr << "LINE-" << __LINE__ << " -> " #x << ": "; _print(x); cerr << endl;
+#else
+#define debug(x)
+#endif
+void _print(int x) {cerr << x;}
+void _print(string x) {cerr << x;}
+void _print(char x) {cerr << x;}
+void _print(double x) {cerr << x;}
+template<class T1, class T2> void _print(pair<T1, T2> p) {cerr << "{"; _print(p.ff); cerr << ", "; _print(p.ss); cerr << "}";}
+template<class V> void _print(vector<V> v) {cerr << "[ "; for (V it : v) {_print(it); cerr << " ";} cerr << "]";}
+template<class S> void _print(set<S> s) {cerr << "[ "; for (S it : s) {_print(it); cerr << " ";} cerr << "]";}
+template<class M1, class M2> void _print(map<M1, M2> mp) {cerr << "[ "; for (auto it : mp) {_print(it); cerr << " ";} cerr << "]";}
+template<class M1, class M2> void _print(unordered_map<M1, M2> mp) {cerr << "[ "; for (auto it : mp) {_print(it); cerr << " ";} cerr << "]";}
+template<class S> void _print(unordered_set<S> s) {cerr << "[ "; for (auto it : s) {_print(it); cerr << " ";} cerr << "]";}
+
+string to_binary(int x) {
+	x = abs(x);
+	if (x == 0)	return "0";
+	if (x == 1)	return "1";
+	string str(static_cast<size_t>(ceil(log2(x))), '0');
+	sprintf(const_cast<char*>(str.data()), "%b", (uint32_t)x);
+	return str;
+}
+
+inline int to_int(char ch) {
+	return isdigit(ch) ? ch - '0' : isupper(ch) ? ch - 'A' : ch - 'a';
+}
+
+// GLOBALS:
+vector<bool> primesSieve;
+
+bool isPRIME(int x) {
+	if (x > 100010) {
+		cerr << "LINE-" << __LINE__ << ": Out of range value " << x << ". Returning false" << endl;
+		return false;
+	}
+	if (primesSieve.size() == 0) {
+		int32_t n = 1e5 + 10;
+		primesSieve.resize(n, true);
+		primesSieve[0] = primesSieve[1] = false; // 0 and 1 are not prime numbers
+		for (int32_t i = 4; i <= n; i += 2)
+			primesSieve[i] = 0;  // Mark even numbers as non-prime
+		for (int32_t p = 3; p * p <= n; p += 2)
+			if (primesSieve[p])
+				for (int32_t i = p * p; i <= n; i += 2 * p)
+					primesSieve[i] = false;
+	}
+	return primesSieve[x];
+}
+
+
+
+void Solve() {
+	// STOPS SYNC WITH STDIO FOR FASTER INPUTS AND OUTPUTS:
+	fastIO
+
+
+}
+
+signed main(void) {
+#ifndef ONLINE_JUDGE
+	if (freopen("error.txt", "w", stderr) == NULL) {
+		perror("Failed to redirect stderr to error.txt");
+		return 1;
+	}
+#endif
+
+	// SOLUTION:
+	Solve();
+}
+
+ ]]></content>
+     <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+     <tabTrigger>gomain</tabTrigger>
+     <!-- Optional: Set a scope to limit where the snippet will trigger -->
+     <scope>source.c++</scope>
+ </snippet>

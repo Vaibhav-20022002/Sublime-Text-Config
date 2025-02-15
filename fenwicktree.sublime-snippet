@@ -1,0 +1,62 @@
+<snippet>
+	<content><![CDATA[
+/**
+ * Fenwick Tree(Binary Indexed Tree) for efficient prefix sum queries and point updates.
+ */
+struct FenwickTree {
+	vector<int> BIT;
+	/**
+	 * Constructor: initializes the tree with size 'n' and all elements set to 0.
+	 * @param n Size of the original array
+	 */
+	FenwickTree(int n) : BIT(n + 1, 0) {}
+	/**
+	 * Constructor: initializes the tree based on an input array.
+	 * @param arr Reference to the input array for building the tree
+	 */
+	FenwickTree(vector<int>& arr) : BIT(arr.size() + 1, 0) {
+		for (size_t i = 1; i < arr.size(); ++i) {
+			update(i, arr[i]);
+		}
+	}
+	/**
+	 * Updates the tree by adding 'value' at index 'ind'.
+	 * @param ind Position in the array (1-based index) to be updated
+	 * @param value Value to be added at index 'ind'
+	 */
+	void update(int ind, int value) {
+		int n = BIT.size();
+		while (ind < n) {
+			BIT[ind] += value; // Add the change
+			ind += (ind & -ind); // Move to the next relevant node
+		}
+	}
+	/**
+	 * Queries the prefix sum from index 1 to 'x'.
+	 * @param x The right extreme of the range [1, x]
+	 * @return The prefix sum from [1, x]
+	 */
+	int query(int x) {
+		int sum = 0;
+		while (x > 0) {
+			sum += BIT[x]; // Add current's value
+			x -= (x & -x); // Move to current's parent
+		}
+		return sum;
+	}
+	/**
+	 * Queries the sum over a range [l, r].
+	 * @param l The left extreme of the range [l, r]
+	 * @param r The right extreme of the range [l, r]
+	 * @return The sum of the range [l, r]
+	 */
+	int range(int l, int r) {
+		return query(r) - query(l - 1);
+	}
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>fenwicktree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
